@@ -18,6 +18,7 @@ fate of the sections marked with `(*)` should be decided separately
 * [Modules](#modules)
 * [Includes](#includes)
 * [Magic constants](#magic-constants)
+* [Preprocessor](#preprocessor)
 
 ## Initial script structure
 
@@ -484,3 +485,24 @@ echo "Current line number is " . __LINE__;
 ```
 
 [🔝 top](#toc)
+
+## Preprocessor
+
+***pphp*** allows to interact with preprocessor via some of the directives.
+
+```
+#define
+//allows you to define keywods and macros
+
+#locale (*)
+//allows you to define the local of the source file, useful when working in i18n environment
+#locale en_US
+// this is an english source file
+
+#locale ru_RU
+//this is a russian source file
+
+//interpreter can convert sources/project between locales as well as translate keywords, you can suppress that behaviout with a separate flag
+//i.e. if you decide to convert polish source to english, interpreted will attempt to translate keywords and variable names and will return the english source as a `filename__en-us.pp`
+//note that #locale is not required
+```
