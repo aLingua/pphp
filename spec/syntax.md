@@ -9,7 +9,7 @@ fate of the sections marked with `(*)` should be decided separately
 
 ## ToC
 
-* [Initial structure](#initial-structure)
+* [Initial script structure](#initial-script-structure)
 * [Types, Variables and constants](#types-variables-and-constants)
 * [Output](#output)
 * [Arrays](#arrays)
@@ -33,7 +33,7 @@ fate of the sections marked with `(*)` should be decided separately
 */
 ```
 
-## Types & Variables
+## Types, Variables and constants
 ```
 // variables
 x = 'variable'
