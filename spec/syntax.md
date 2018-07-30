@@ -33,6 +33,8 @@ fate of the sections marked with `(*)` should be decided separately
 */
 ```
 
+[🔝 top](#toc)
+
 ## Types, Variables and constants
 ```
 // variables
@@ -145,6 +147,8 @@ concat = 'hi #{5}'
 
 ```
 
+[🔝 top](#toc)
+
 ## Output
 
 `echo` is an alias of `puts` that prints to the output with a new line, while `print` is used to print to the output __without__ a new line
@@ -161,6 +165,8 @@ concat = 'hi #{5}'
 hi there_nice to meet you
 hi there
 ```
+
+[🔝 top](#toc)
 
 ## Arrays
 
@@ -205,6 +211,8 @@ array.include?(1) #=> true
 array.exists?(1) #=> true (*)
 ``` 
 
+[🔝 top](#toc)
+
 **Hashes** - hashes are classical associative arrays found in php, they store key-value pairs.
 ```
 // Hashes
@@ -229,6 +237,8 @@ hash['nope'] #=> nil
 hash.key?('wow') #=> true
 hash.value?('arrays') #=> true
 ```
+
+[🔝 top](#toc)
 
 ## Logic
 ```
@@ -333,6 +343,8 @@ end
 
 ```
 
+[🔝 top](#toc)
+
 ## Functions
 ```
 # def is an alias of func which is an alias of function
@@ -375,6 +387,8 @@ echo function_name(1, 2) #=> 3
 // useful for programatically determining which function to run
 ```
 
+[🔝 top](#toc)
+
 ## Modules
 ```
 //you can embed modules or use them separately, they have a `.ppm` extension
@@ -407,6 +421,8 @@ use mod2.echo
 echo("Penny")
 #=> "Penny"
 ```
+
+[🔝 top](#toc)
 
 ## Includes
 ```
@@ -443,6 +459,8 @@ value = include 'my-include.pp';
 
 ```
 
+[🔝 top](#toc)
+
 ## Magic constants
 ```
 // Get current module name. Must be used inside a module declaration.
@@ -464,3 +482,5 @@ echo "Current function name is " . __FUNCTION__;
 echo "Current line number is " . __LINE__;
 
 ```
+
+[🔝 top](#toc)
