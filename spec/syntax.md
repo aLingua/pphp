@@ -376,7 +376,37 @@ echo function_name(1, 2) #=> 3
 ```
 
 ## Modules
-WIP
+```
+//you can embed modules or use them separately, they have a `.ppm` extension
+
+Module mod1(x)
+  @intro = "it's time for greetings:"
+  func sayhi(x)
+    return 'hi, #{x}'
+  end
+  return @intro + sayhi(x)
+end
+
+//result
+mod1("Waffle")
+"it's time for greetings:"
+"hi, Waffle"
+
+//from somewhere else
+use mod1
+mod1("Ginger")
+
+//to call a function
+use mod2
+mod2.echo("Walter")
+#=> "Walter"
+
+//to use just that function
+use mod2.echo
+# now you can use it
+echo("Penny")
+#=> "Penny"
+```
 
 ## Includes
 ```
