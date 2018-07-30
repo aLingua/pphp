@@ -47,4 +47,4 @@ When compared to php *pphp* does not have the OOP, which is a source of unnecess
 * ability to convert composer packages to ppm packages
 
 
-### for syntax please check syntax.md
+### for syntax please check [syntax](https://github.com/aLingua/pphp/blob/master/spec/syntax.md)
