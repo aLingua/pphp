@@ -118,6 +118,9 @@ anotherString = 'now i\'m a string with {$val}' //also true
 anotherString = 'now i\'m a string with ${val}' //also true (*)
 anotherString = 'now i\'m a string with $${val}' //also true (*)
 
+//double quoted text does not need escaping
+anotherString = "I'm not escaped" #=> "I'm not escaped"
+
 //heredocs are a thing for multiline strings
 
 multiline = <<<HereDOC
@@ -160,22 +163,274 @@ hi there
 ```
 
 ## Arrays
-WIP 
+
+**Arrays** - arrays are simple collections of items, that store values only.
+```
+array = [1,2,3,4,5] #=> [1,2,3,4,5]
+# shorthand arr is also valid
+
+//different types? Yes, please
+array = [1,'hi',false] #=> [1,"hi",false]
+
+//indexing arrays
+array[0] #=> -1
+array.first #=> -1
+array[-1] #=> 5
+array.last #=> 5
+array[12] #=> nil
+
+//with defined start index and length
+array[2,3] #=> [3,4,5]
+
+//reverse
+a = [1,2,3]
+a.reverse! #=> [3,2,1]
+# also rev is an alias
+a.rev! #=> [3,2,1]
+
+//range
+array[1..3] #=> [2,3,4]
+
+//add to array
+array << 6 #=> [1,2,3,4,5,6]
+# or
+array.push(6) #=> [1,2,3,4,5,6]
+
+//remove from array
+array.delete(6) #=> [1,2,3,4,5]
+
+//check if item exists
+array.include?(1) #=> true
+# also
+array.exists?(1) #=> true (*)
+``` 
+
+**Hashes** - hashes are classical associative arrays found in php, they store key-value pairs.
+```
+// Hashes
+
+php people know how it goes, but instead of _array_ you should write _hash_
+
+hash = {
+'wow' => 'arrays',
+'much' => 'assoc',
+'so' => 'php',
+'doge' => 🐶
+}
+
+hash.keys #=> ['wow','much','so','doge']
+
+hash['wow'] #=> 'arrays',
+hash['doge'] #=> 🐶
+
+//non-existant value returns nil
+hash['nope'] #=> nil
+
+hash.key?('wow') #=> true
+hash.value?('arrays') #=> true
+```
 
 ## Logic
-WIP
+```
+if true
+  'if statement'
+elsif false
+  'else if, optional'
+else
+  'else, also optional'
+end
+
+//each loops ~ for loops
+
+(1..5).each do |counter|
+  puts "iteration #{counter}"
+end
+
+for counter in 1..5
+  puts "iteration #{counter}"
+end
+
+//contents of data structures can also be iterated using each
+array.each do |element|
+  puts "#{element} is part of the array"
+end
+hash.each do |key, value|
+  puts "#{key} is #{value}"
+end
+
+#ieach is an alias of each_with_index
+array.ieach do |element, index|
+  puts "#{element} is number #{index} in the array"
+end
+
+counter = 1
+while counter <= 5 do
+  puts "iteration #{counter}"
+  counter += 1
+end
+#=> iteration 1
+#=> iteration 2
+#=> iteration 3
+#=> iteration 4
+#=> iteration 5
+
+# a bunch of other helpful looping functions from ruby,
+# for example "map", "reduce", "inject", the list goes on. Map,
+# for instance, takes the array it's looping over, does something
+# to it as defined in your loop, and returns an entirely new array.
+array = [1,2,3,4,5]
+doubled = array.map do |element|
+  element * 2
+end
+puts doubled
+#=> [2,4,6,8,10]
+puts array
+#=> [1,2,3,4,5]
+
+grade = 'B'
+
+case grade
+when 'A'
+  puts 'Way to go kiddo'
+when 'B'
+  puts 'Better luck next time'
+when 'C'
+  puts 'You can do better'
+when 'D'
+  puts 'Scraping through'
+when 'F'
+  puts 'You failed!'
+else
+  puts 'Alternative grading system, eh?'
+end
+#=> "Better luck next time"
+
+# cases can also use ranges
+grade = 82
+case grade
+when 90..100
+  puts 'Hooray!'
+when 80...90
+  puts 'OK job'
+else
+  puts 'You failed!'
+end
+#=> "OK job"
+
+# exception handling:
+begin
+  # code here that might raise an exception
+  raise NoMemoryError, 'You ran out of memory.'
+rescue NoMemoryError => exception_variable
+  puts 'NoMemoryError was raised', exception_variable
+rescue RuntimeError => other_exception_variable
+  puts 'RuntimeError was raised now'
+else
+  puts 'This runs if no exceptions were thrown at all'
+ensure
+  puts 'This code always runs no matter what'
+end
+
+```
 
 ## Functions
-WIP
+```
+# def is an alias of func which is an alias of function
+
+func function1()
+  puts 'Hi'
+end
+echo function1()
+
+func function2(x,y = 1)
+  result = x + y
+  return result
+end
+echo function2(4) #=> 5
+echo function2(4,2) #=> 6
+
+# result is not accessible outside the function
+# print result # Gives a warning.
+
+inc = func(x)
+  return x + 1
+end
+
+echo inc(2) #=> 3
+
+// functions can return functions
+func bar (x, y)
+    // Use 'use' to bring in outside variables
+    return function (z) use (x, y)
+        foo(x, y, z);
+    end
+end
+
+bar = bar('A', 'B')
+bar('C') # Prints "A - B - C"
+
+// you can call named functions using strings
+function_name = 'add';
+echo function_name(1, 2) #=> 3
+// useful for programatically determining which function to run
+```
 
 ## Modules
 WIP
 
-## Modules
-WIP
+## Includes
+```
+<?pp
+// pphp code within included files must also begin with a pp open tag
 
-##Includes
-WIP
+include 'my-file.pp';
+// The code in my-file.pp is now available in the current scope.
+// If the file cannot be included (e.g. file not found), a warning is emitted.
+
+include_once 'my-file.pp';
+// If the code in my-file.pp has been included elsewhere, it will
+// not be included again. This prevents multiple class declaration errors
+
+require 'my-file.pp';
+require_once 'my-file.pp';
+// Same as include(), except require() will cause a fatal error if the
+// file cannot be included.
+
+// Contents of my-include.pp:
+<?pp
+
+return 'Anything you like.';
+// End file
+
+// Includes and requires may also return a value.
+value = include 'my-include.pp';
+
+// Files are included based on the file path given or, if none is given,
+// the include_path configuration directive. If the file isn't found in
+// the include_path, include will finally check in the calling script's
+// own directory and the current working directory before failing.
+/* */
+
+```
 
 ## Magic constants
-WIP
+```
+// Get current module name. Must be used inside a module declaration.
+echo "Current class name is " . __MODULE__;
+
+// Get full path directory of a file
+echo "Current directory is " . __DIR__;
+
+    // Typical usage
+    require __DIR__ . '/modules/init.pp';
+
+// Get full path of a file
+echo "Current file path is " . __FILE__;
+
+// Get current function name
+echo "Current function name is " . __FUNCTION__;
+
+// Get current line number
+echo "Current line number is " . __LINE__;
+
+```
