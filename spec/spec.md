@@ -1,4 +1,4 @@
-# pphp spec(?)
+# pphp spec
 
 ## Table of contents
 * [What is pphp?](#what-is-pphp)
